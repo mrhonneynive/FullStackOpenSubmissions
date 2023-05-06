@@ -1,5 +1,4 @@
 ```mermaid
-journey
 sequenceDiagram
     participant browser
     participant server
