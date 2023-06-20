@@ -32,6 +32,11 @@ const App = () => {
         {part3} {exercises3}
       </p>
       <p>Number of exercises {exercises1 + exercises2 + exercises3}</p>
+
+
+      <Header course={course} />
+      <Content />
+      <Total />
     </div>
   )
 }
