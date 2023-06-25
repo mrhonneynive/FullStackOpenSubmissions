@@ -43,7 +43,7 @@ Each `partX` directory contains subdirectories for individual exercises or proje
 
 To run the exercises or projects in this repository, follow these steps:
 
-1. Clone the repository to your local machine using `git clone https://github.com/your-username/fullstack-open-submissions.git`.
+1. Clone the repository to your local machine using `git clone https://github.com/yourUsername/FullStackOpenSubmissions.git`.
 2. Navigate to the specific part or exercise/project directory you want to run.
 3. Install the required dependencies using a package manager like `npm` or `yarn`. For example, run `npm install` to install the necessary packages.
 4. Start the application using the appropriate command. Typically, you can use `npm start` or `yarn start` to launch the development server.
