@@ -13,15 +13,15 @@ const FeedbackScore = (props) => {
 }
 
 const Total = (props) => {
-  return <div>all {props.counterTotal} </div>
+  return <div>all {props.counter} </div>
 }
 
 const Average = (props) => {
-  return <div>average {props.counterAverage} </div>
+  return <div>average {props.counter} </div>
 }
 
 const Positive = (props) => {
-  return <div>positive {props.counterPositive} </div>
+  return <div>positive {props.counter} </div>
 }
 
 const App = () => {
@@ -29,6 +29,18 @@ const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
+
+  const counterTotal = () => {
+    return good + neutral + bad;
+  }
+
+  const counterAverage = () => {
+    return (good - bad) / (good + neutral + bad);
+  }
+  
+  const counterPositive = () => {
+    return good / (good + neutral + bad) * 100;
+  }
 
   return (
     <>
@@ -41,9 +53,9 @@ const App = () => {
       <FeedbackScore name="good" counter={good} />
       <FeedbackScore name="neutral" counter={neutral} />
       <FeedbackScore name="bad" counter={bad} />
-      <Total counterTotal={good + neutral + bad} />
-      <Average counterAverage={(good - bad) / (good + neutral + bad)} />
-      <Positive counterPositive={good / (good + neutral + bad) * 100} />
+      <Total counter={counterTotal()} />
+      <Average counter={counterAverage()} />
+      <Positive counter={counterPositive()} />
     </>
   )
 }
