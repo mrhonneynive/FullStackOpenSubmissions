@@ -6,12 +6,6 @@ const Statistics = (props) =>  {
   }
   return (
     <>
-          {/* <FeedbackScore name="good" counter={props.good} />
-          <FeedbackScore name="neutral" counter={props.neutral} />
-          <FeedbackScore name="bad" counter={props.bad} />
-          <Total counter={props.counterTotal} />
-          <Average counter={props.counterAverage} />
-          <Positive counter={props.counterPositive} /> */}
           <StatisticLine text="good" value={props.good} />
           <StatisticLine text="neutral" value={props.neutral} />
           <StatisticLine text="bad" value={props.bad} />
@@ -60,7 +54,6 @@ const Positive = (props) => {
 }
 
 const App = () => {
-  // save clicks of each button to its own state
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
