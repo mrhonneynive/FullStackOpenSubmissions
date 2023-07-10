@@ -1,5 +1,21 @@
 import { useState } from 'react'
 
+const Statistics = (props) =>  {
+  if ((props.good + props.neutral + props.bad) === 0) {
+    return "No feedback given";
+  }
+  return (
+    <>
+      <FeedbackScore name="good" counter={props.good} />
+      <FeedbackScore name="neutral" counter={props.neutral} />
+      <FeedbackScore name="bad" counter={props.bad} />
+      <Total counter={props.counterTotal} />
+      <Average counter={props.counterAverage} />
+      <Positive counter={props.counterPositive} />
+    </>
+  )
+}
+
 const Button = (props) => {
   return (
     <button onClick={() => props.setCounter(props.counter + 1)}>
@@ -50,12 +66,8 @@ const App = () => {
       <Button buttonName="bad" setCounter={setBad} counter={bad} />
 
       <h2>statistics</h2>
-      <FeedbackScore name="good" counter={good} />
-      <FeedbackScore name="neutral" counter={neutral} />
-      <FeedbackScore name="bad" counter={bad} />
-      <Total counter={counterTotal()} />
-      <Average counter={counterAverage()} />
-      <Positive counter={counterPositive()} />
+      <Statistics good={good} neutral={neutral} bad={bad} 
+      counterTotal={counterTotal()} counterAverage={counterAverage()}  counterPositive={counterPositive()} />
     </>
   )
 }
