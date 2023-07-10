@@ -6,12 +6,31 @@ const Statistics = (props) =>  {
   }
   return (
     <>
-      <FeedbackScore name="good" counter={props.good} />
-      <FeedbackScore name="neutral" counter={props.neutral} />
-      <FeedbackScore name="bad" counter={props.bad} />
-      <Total counter={props.counterTotal} />
-      <Average counter={props.counterAverage} />
-      <Positive counter={props.counterPositive} />
+          {/* <FeedbackScore name="good" counter={props.good} />
+          <FeedbackScore name="neutral" counter={props.neutral} />
+          <FeedbackScore name="bad" counter={props.bad} />
+          <Total counter={props.counterTotal} />
+          <Average counter={props.counterAverage} />
+          <Positive counter={props.counterPositive} /> */}
+          <StatisticLine text="good" value={props.good} />
+          <StatisticLine text="neutral" value={props.neutral} />
+          <StatisticLine text="bad" value={props.bad} />
+          <StatisticLine text="all" value={props.counterTotal} />
+          <StatisticLine text="average" value={props.counterAverage} />
+          <StatisticLine text="positive" value={props.counterPositive} />
+    </>
+  )
+}
+
+const StatisticLine = (props) => {
+  return (
+    <>
+      <table>
+        <tr>
+          <td style={{width: 60}}>{props.text}</td>
+          <td>{props.value}</td>
+        </tr>
+      </table>
     </>
   )
 }
