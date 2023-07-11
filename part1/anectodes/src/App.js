@@ -41,6 +41,21 @@ const App = () => {
       setVotes(updatedVotes)
   }
 
+  const findMaxNumberAndIndex = (array) => {
+    let maxNumber = 0;
+    let maxIndex = 0;
+
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] > maxNumber) {
+        maxNumber = array[i];
+        maxIndex = i;
+      }      
+    }
+
+    return [maxNumber, maxIndex];
+  }
+
+  let [highestVotes, highestVotesIndex] = findMaxNumberAndIndex(votes);
    
   const [selected, setSelected] = useState(0)
 
@@ -52,6 +67,8 @@ const App = () => {
       <button onClick={handleVoteClick}>vote</button>
       <NextButton setSelected={setSelected} />
       <h2>Anecdote with most votes</h2>
+      <p>{anecdotes[highestVotesIndex]}</p>
+      <p>has {highestVotes} votes </p>
     </div>
   )
 }
