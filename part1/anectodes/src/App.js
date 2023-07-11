@@ -1,25 +1,5 @@
 import { useState } from 'react'
 
-
-
-//TODO
-//
-//there is a problem with the incrementing and displaying the vote
-//can't really alter the array properly
-//solve it asap
-const VoteButton = (props) => {
-
-  const incrementVote = () => {
-    props.array[props.selected] += 1;
-  }
-  console.log(props.array);
-  return (
-    <>
-      <button onClick={incrementVote}>vote</button>
-    </>
-  )
-}
-
 const NextButton = (props) => {
   const randomNumber = () => props.setSelected(Math.floor(Math.random() * 8));
   return (
@@ -29,13 +9,13 @@ const NextButton = (props) => {
   )
 }
 
-// const DisplayVotes = (props) => {
-//   return (
-//     <>
-//       has {props.copy[props.selected]} votes
-//     </>
-//   )
-// } 
+const DisplayVotes = (props) => {
+  return (
+    <>
+      <p>has {props.array[props.selected]} votes</p>
+    </>
+  )
+} 
 
 const App = () => {
   const anecdotes = [
@@ -53,7 +33,14 @@ const App = () => {
   for (let i = 0; i < anecdotes.length; i++) {
     anecdotesArray.push(0);    
   }
-  console.log(anecdotesArray)
+
+  const [votes, setVotes] = useState(anecdotesArray)
+  const updatedVotes = [...votes];
+  const handleVoteClick = () => {
+      updatedVotes[selected] += 1; 
+      setVotes(updatedVotes)
+  }
+
    
   const [selected, setSelected] = useState(0)
 
@@ -61,11 +48,9 @@ const App = () => {
     <div>
       <h1>Anecdote of the day</h1>
       {anecdotes[selected]}
-      {/* <DisplayVotes copy={copy} /> */}
-      <br></br>
-      <VoteButton array={anecdotesArray} selected={selected} />
+      <DisplayVotes array={votes} selected={selected} />
+      <button onClick={handleVoteClick}>vote</button>
       <NextButton setSelected={setSelected} />
-
       <h2>Anecdote with most votes</h2>
     </div>
   )
